@@ -81,7 +81,7 @@ class CustomWorld extends World {
 
   async initBrowser() {
     this.browser = await chromium.launch({
-      headless: false,
+      headless: true,
       // slowMo: 1000, // Add 1000ms delay between actions (adjust as needed)
       args: [
         '--no-sandbox',
