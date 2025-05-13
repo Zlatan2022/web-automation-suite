@@ -21,10 +21,9 @@ run_playwright_tests:
     when: always # Upload artifacts even if the job fails
     paths:
       # Artifact paths must be relative to the REPOSITORY ROOT.
-      # Since reports/screenshots are generated inside shop-e2e, paths are shop-e2e/...
-      - playwright-report/
-      - test-results/
-      - screenshots/ # Include if screenshots are saved here
+      # Artifact paths must be relative to the REPOSITORY ROOT.
+      - reports/ # Path for Cucumber HTML/JSON reports
+      - screenshots/ # Path for screenshots
     expire_in: 1 week # How long to keep the artifacts
 
   # Optional: Uncomment and configure if you want JUnit test results displayed in GitLab UI
