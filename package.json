@@ -1,0 +1,37 @@
+{
+  "name": "shop-e2e",
+  "version": "1.0.0",
+  "description": "E2E Playwright test automation for e-commerce website",
+  "engines": {
+    "node": "18.17.0"
+  },
+  "scripts": {
+    "test": "cucumber-js",
+    "test:debug": "cross-env DEBUG=true PWDEBUG=1 cucumber-js",
+    "test:codegen": "playwright codegen",
+    "test:inspector": "PWDEBUG=1 cucumber-js",
+    "test:logout": "cross-env PWDEBUG=1 cucumber-js --tags \"@logout\"",
+    "test:sauceDemo": "cross-env PWDEBUG=1 cucumber-js --tags \"@sauceDemo\""
+  },
+  "keywords": [
+    "playwright",
+    "cucumber",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/register": "^7.25.9",
+    "@cucumber/cucumber": "^10.3.1",
+    "@playwright/test": "^1.42.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5"
+  },
+  "dependencies": {
+    "cucumber-html-reporter": "^6.0.0",
+    "jose": "^5.9.6",
+    "prettier": "^3.4.1"
+  }
+}
