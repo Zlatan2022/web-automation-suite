@@ -1,0 +1,32 @@
+# Use a Playwright Docker image with Node.js and browsers pre-installed.
+# Use a specific version tag that matches your Playwright library version.
+image: mcr.microsoft.com/playwright:v1.49.0-jammy # Update this tag if your Playwright version changes
+
+stages:
+  - test
+
+run_playwright_tests:
+  stage: test
+  script:
+    # Install project dependencies using package-lock.json
+    - npm ci
+
+    # Playwright browsers are included in the specified image,
+    # so typically 'npx playwright install' is not needed here.
+
+    # Run the tests using the script defined in your package.json (e.g., "cucumber-js")
+    - npm test
+
+  artifacts:
+    when: always # Upload artifacts even if the job fails
+    paths:
+      # Artifact paths must be relative to the REPOSITORY ROOT.
+      # Since reports/screenshots are generated inside shop-e2e, paths are shop-e2e/...
+      - playwright-report/
+      - test-results/
+      - screenshots/ # Include if screenshots are saved here
+    expire_in: 1 week # How long to keep the artifacts
+
+  # Optional: Uncomment and configure if you want JUnit test results displayed in GitLab UI
+  #reports:
+    #junit: shop-e2e/junit-report.xml # Path relative to repository root
