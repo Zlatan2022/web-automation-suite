@@ -26,6 +26,6 @@ run_playwright_tests:
       - screenshots/ # Path for screenshots
     expire_in: 1 week # How long to keep the artifacts
 
-  # Optional: Uncomment and configure if you want JUnit test results displayed in GitLab UI
-  #reports:
-    #junit: shop-e2e/junit-report.xml # Path relative to repository root
+   #Optional: Uncomment and configure if you want JUnit test results displayed in GitLab UI
+    reports:
+      junit: reports/junit-report.xml # Path relative to repository root
