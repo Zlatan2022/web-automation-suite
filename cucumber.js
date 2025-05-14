@@ -21,11 +21,12 @@ module.exports = {
     requireModule: ['@babel/register'],
     require: ['features/step-definitions/**/*.js', 'features/support/**/*.js'],
     format: [
-      'json:reports/cucumber-report.json', // Save JSON report in the reports folder
-      'html:reports/cucumber-report.html', // Save HTML report in the reports folder
+      'json:reports/cucumber-report.json',
+      'html:reports/cucumber-report.html',
+      'junit:reports/junit-report.xml',
     ],
     formatOptions: { snippetInterface: 'async-await' },
-    timeout: 60000, // 60 seconds timeout
+    timeout: 60000,
   },
-  after: generateReport, // Generate the HTML report after test execution
+  after: generateReport,
 };
