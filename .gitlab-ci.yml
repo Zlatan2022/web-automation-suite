@@ -10,6 +10,8 @@ run_playwright_tests:
   script:
     # Install project dependencies using package-lock.json
     - npm ci
+    - npm test
+    - ls -la reports/ 
 
     # Playwright browsers are included in the specified image,
     # so typically 'npx playwright install' is not needed here.
