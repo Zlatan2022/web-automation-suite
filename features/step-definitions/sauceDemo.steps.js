@@ -63,3 +63,14 @@ When('User clicks on Logout link', async function () {
 Then('User should see login button', async function () {
     await this.logoutPage.verifyLoginButton(this.page);
 });
+
+//invalidLogin.steps.js
+
+When('User logs in with invalid credentials', async function (dataTable) {
+  const credentials = dataTable.rowsHash();
+  await this.loginPage.loginWithInvalidCredentials(this.page, credentials['Username'], credentials['Password']);
+});
+
+Then('User should see error message', async function () {
+  await this.loginPage.verifyErrorMessage(this.page);
+});
