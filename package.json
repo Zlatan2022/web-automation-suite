@@ -25,7 +25,6 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/register": "^7.25.9",
     "@cucumber/cucumber": "^10.3.1",
-    "@cucumber/junit-formatter": "^1.0.0",
     "@playwright/test": "^1.42.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5"
@@ -36,3 +35,4 @@
     "prettier": "^3.4.1"
   }
 }
+

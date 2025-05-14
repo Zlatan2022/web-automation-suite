@@ -23,7 +23,7 @@ module.exports = {
     format: [
       'json:reports/cucumber-report.json',
       'html:reports/cucumber-report.html',
-      'junit:reports/junit-report.xml',
+      'junit:reports/junit-report.xml'
     ],
     formatOptions: { snippetInterface: 'async-await' },
     timeout: 60000,
