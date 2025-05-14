@@ -53,3 +53,6 @@ debug.log
 # Local development specific files
 .local/
 reports/
+
+# Generated files / Artifacts (Adding screenshots based on your project structure)
+screenshots/

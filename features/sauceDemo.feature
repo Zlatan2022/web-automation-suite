@@ -1,13 +1,12 @@
 Feature: Sauce Demo Login and Checkout
 
-Background:
+  Background:
     Given User navigates to the Sauce Demo homepage
-    When User logs in with valid credentials
+    
 
   @sauceDemo
   Scenario: User logs in, adds product to cart, and checks out
-    # Given User navigates to the Sauce Demo homepage
-    # When User logs in with valid credentials
+    When User logs in with valid credentials
     And User adds Sauce Labs Fleece Jacket to cart
     And User navigates to cart
     Then User should see the product in cart
@@ -21,9 +20,17 @@ Background:
     And User clicks finish
     Then User should see order confirmation
 
+  @invalidLogin
+  Scenario: User tries to login with invalid credentials
+    When User logs in with invalid credentials
+      | Field    | Value          |
+      | Username | wrong_user     |
+      | Password | wrong_password |
+    Then User should see error message
+
   @logout
   Scenario: User logs out successfully
-    # Given User navigates to the Sauce Demo homepage
+    When User logs in with valid credentials
     When User clicks on Open Menu button
     And User clicks on Logout link
     Then User should see login button

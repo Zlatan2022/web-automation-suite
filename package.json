@@ -11,7 +11,8 @@
     "test:codegen": "playwright codegen",
     "test:inspector": "PWDEBUG=1 cucumber-js",
     "test:logout": "cross-env PWDEBUG=1 cucumber-js --tags \"@logout\"",
-    "test:sauceDemo": "cross-env PWDEBUG=1 cucumber-js --tags \"@sauceDemo\""
+    "test:sauceDemo": "cross-env PWDEBUG=1 cucumber-js --tags \"@sauceDemo\"",
+    "test:invalidLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@invalidLogin\""
   },
   "keywords": [
     "playwright",
