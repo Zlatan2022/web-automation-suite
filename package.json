@@ -12,7 +12,8 @@
     "test:inspector": "PWDEBUG=1 cucumber-js",
     "test:logout": "cross-env PWDEBUG=1 cucumber-js --tags \"@logout\"",
     "test:sauceDemo": "cross-env PWDEBUG=1 cucumber-js --tags \"@sauceDemo\"",
-    "test:invalidLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@invalidLogin\""
+    "test:invalidLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@invalidLogin\"",
+    "test:emptyLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@emptyLogin\""
   },
   "keywords": [
     "playwright",

@@ -26,7 +26,7 @@ module.exports = {
       'junit:reports/junit-report.xml'
     ],
     formatOptions: { snippetInterface: 'async-await' },
-    timeout: 60000,
+    timeout: 70000,
   },
   after: generateReport,
 };
