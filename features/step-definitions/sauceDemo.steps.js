@@ -74,3 +74,14 @@ When('User logs in with invalid credentials', async function (dataTable) {
 Then('User should see error message', async function () {
   await this.loginPage.verifyErrorMessage(this.page);
 });
+
+//emptyLogin.steps.js
+
+When('User leaves username and password empty and clicks login button', async function () {
+  await this.loginPage.loginClick(this.page);
+});
+
+Then('User should see error message for empty username and password', async function () {
+  await this.loginPage.verifyErrorMessageUsernameRequired(this.page);
+});
+
