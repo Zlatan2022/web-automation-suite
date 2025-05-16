@@ -32,6 +32,12 @@ Feature: Sauce Demo Login and Checkout
     And User clicks finish
     Then User should see order confirmation
 
+  @sortProducts
+  Scenario: User sorts products by price low to high
+    When User logs in with valid credentials
+    And User selects price (low to high) sort option
+    Then User should see sort container is visible
+
   @logout
   Scenario: User logs out successfully
     When User logs in with valid credentials
