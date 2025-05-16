@@ -50,6 +50,16 @@ Then('User should see order confirmation', async function () {
     await this.checkoutPage.verifyOrderConfirmation(this.page);
 });
 
+//sort.steps.js
+
+When('User selects price \\(low to high\\) sort option', async function () {
+  await this.inventoryPage.selectSortOption(this.page, 'lohi');
+});
+
+Then('User should see sort container is visible', async function () {
+  await this.inventoryPage.verifySortContainerVisible(this.page);
+});
+
 //logout.steps.js
 
 When('User clicks on Open Menu button', async function () {
@@ -84,4 +94,3 @@ When('User leaves username and password empty and clicks login button', async fu
 Then('User should see error message for empty username and password', async function () {
   await this.loginPage.verifyErrorMessageUsernameRequired(this.page);
 });
-

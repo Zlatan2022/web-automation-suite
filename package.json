@@ -13,7 +13,8 @@
     "test:logout": "cross-env PWDEBUG=1 cucumber-js --tags \"@logout\"",
     "test:sauceDemo": "cross-env PWDEBUG=1 cucumber-js --tags \"@sauceDemo\"",
     "test:invalidLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@invalidLogin\"",
-    "test:emptyLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@emptyLogin\""
+    "test:emptyLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@emptyLogin\"",
+    "test:sortProducts": "cross-env PWDEBUG=1 cucumber-js --tags \"@sortProducts\""
   },
   "keywords": [
     "playwright",
