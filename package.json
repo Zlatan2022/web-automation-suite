@@ -6,15 +6,18 @@
     "node": "18.17.0"
   },
   "scripts": {
-    "test": "cucumber-js",
-    "test:debug": "cross-env DEBUG=true PWDEBUG=1 cucumber-js",
+    "test": "cross-env BROWSER_NAME=chromium cucumber-js",
+    "test:chromium": "cross-env BROWSER_NAME=chromium cucumber-js",
+    "test:firefox": "cross-env BROWSER_NAME=firefox cucumber-js",
+    "test:edge": "cross-env BROWSER_NAME=webkit cucumber-js",
+    "test:debug": "cross-env BROWSER_NAME=chromium DEBUG=true PWDEBUG=1 cucumber-js",
     "test:codegen": "playwright codegen",
-    "test:inspector": "PWDEBUG=1 cucumber-js",
-    "test:logout": "cross-env PWDEBUG=1 cucumber-js --tags \"@logout\"",
-    "test:sauceDemo": "cross-env PWDEBUG=1 cucumber-js --tags \"@sauceDemo\"",
-    "test:invalidLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@invalidLogin\"",
-    "test:emptyLogin": "cross-env PWDEBUG=1 cucumber-js --tags \"@emptyLogin\"",
-    "test:sortProducts": "cross-env PWDEBUG=1 cucumber-js --tags \"@sortProducts\""
+    "test:inspector": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js",
+    "test:logout": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@logout\"",
+    "test:sauceDemo": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@sauceDemo\"",
+    "test:invalidLogin": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@invalidLogin\"",
+    "test:emptyLogin": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@emptyLogin\"",
+    "test:sortProducts": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@sortProducts\""
   },
   "keywords": [
     "playwright",
@@ -38,4 +41,3 @@
     "prettier": "^3.4.1"
   }
 }
-
