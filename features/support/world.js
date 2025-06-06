@@ -1,4 +1,4 @@
-import { chromium } from '@playwright/test';
+import { chromium, firefox, webkit } from '@playwright/test';
 import { setWorldConstructor, World } from '@cucumber/cucumber';
 import {
   ACTION_TIMEOUT,
@@ -80,27 +80,63 @@ class CustomWorld extends World {
   }
 
   async initBrowser() {
-    this.browser = await chromium.launch({
-      headless: true,
-      // slowMo: 1000, // Add 1000ms delay between actions (adjust as needed)
-      args: [
+    const browserName = process.env.BROWSER_NAME || 'chromium';
+    const headlessEnv = process.env.HEADLESS;
+    const headless = headlessEnv !== undefined ? headlessEnv.toLowerCase() === 'true' : true;
+
+    console.log(`Launching browser: ${browserName} (headless: ${headless})`);
+
+    let browserArgs = []; // Start with no specific args for Firefox/WebKit by default
+
+    if (browserName === 'chromium') {
+      browserArgs = [
         '--no-sandbox',
         '--disable-web-security',
         '--disable-features=IsolateOrigins',
         '--disable-site-isolation-trials',
-      ],
-    });
+      ];
+    }
+
+    const launchOptions = {
+      headless: headless,
+      args: browserArgs,
+    };
+
+    if (browserName === 'firefox') {
+      this.browser = await firefox.launch(launchOptions);
+    } else if (browserName === 'webkit') {
+      this.browser = await webkit.launch(launchOptions); // WebKit will now use empty args
+    } else if (browserName === 'chromium') {
+      this.browser = await chromium.launch(launchOptions);
+    } else {
+      console.warn(`Unsupported browser: ${browserName}. Defaulting to chromium.`);
+      // For default (Chromium), ensure Chromium-specific args are present
+      const defaultChromiumArgs = [
+        '--no-sandbox',
+        '--disable-web-security',
+        '--disable-features=IsolateOrigins',
+        '--disable-site-isolation-trials',
+      ];
+      this.browser = await chromium.launch({ ...launchOptions, args: defaultChromiumArgs });
+    }
   }
 
   async initContext() {
-    this.context = await this.browser.newContext({
+    const browserName = this.browser.browserType().name(); // Get current browser name
+    let contextOptions = {
       baseURL: BASE_URL || 'http://localhost:3000', // Default to localhost
       viewport: { width: 1280, height: 720 },
       ignoreHTTPSErrors: true,
-      permissions: ['clipboard-read', 'clipboard-write'],
       navigationTimeout: parseInt(NAVIGATION_TIMEOUT, 10) || 60000, // Default 60s
       actionTimeout: parseInt(ACTION_TIMEOUT, 10) || 30000, // Default 30s
-    });
+    };
+
+    // Only apply clipboard permissions for Chromium as they cause issues with Firefox/WebKit
+    if (browserName === 'chromium') {
+      contextOptions.permissions = ['clipboard-read', 'clipboard-write'];
+    }
+
+    this.context = await this.browser.newContext(contextOptions);
   }
 
   async cleanup() {

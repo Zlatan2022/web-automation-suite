@@ -245,20 +245,38 @@ await page.waitForLoadState('networkidle');
 
 ## Running Tests
 
-1. Run all tests:
+Tests can be run across different browsers: Chromium, Firefox, and WebKit (which can be used for Edge or Safari).
+
+1. Run all tests (defaults to Chromium):
 ```bash
 npm test
 ```
 
-2. Run specific feature:
+2. Run tests on a specific browser:
+```bash
+npm run test:chromium  # For Chromium
+npm run test:firefox   # For Firefox
+npm run test:edge      # For WebKit (e.g., Edge, Safari)
+```
+
+3. Run specific feature (defaults to Chromium):
 ```bash
 npm test features/login.feature
 ```
+   To run a specific feature on a different browser, you can execute the browser-specific script with the feature path:
+   `npm run test:firefox features/login.feature`
+   Alternatively, you can temporarily modify the main `test` script in `package.json` or create new specialized scripts.
 
-3. Run with UI (headed mode):
+4. Run with UI (headed mode - defaults to Chromium):
+   The `test:headed` script provided in the original `Installation` section example (`cucumber-js --world-parameters "{\\\"headless\\\": false}"`) does not inherently include browser selection via `BROWSER_NAME`. To run in headed mode with a specific browser, you would typically adjust your scripts in `package.json` or run with environment variables:
 ```bash
-npm run test:headed
+cross-env BROWSER_NAME=firefox HEADLESS=false cucumber-js
 ```
+   Consider updating or adding scripts in `package.json` for easier headed testing with different browsers, for example:
+   `"test:firefox:headed": "cross-env BROWSER_NAME=firefox HEADLESS=false cucumber-js"`
+
+5. Debugging:
+   Scripts like `test:debug`, `test:inspector`, and other specific test-tag scripts (e.g., `test:logout`, `test:sauceDemo`) now default to running on Chromium as per their updated definitions in `package.json`. If you need to debug in a different browser, you can modify the `BROWSER_NAME` environment variable directly within those script definitions in `package.json`. For example, change `cross-env BROWSER_NAME=chromium` to `cross-env BROWSER_NAME=firefox` in the desired script line.
 
 ## Reporting
 
