@@ -265,7 +265,16 @@ npm test features/login.feature
 ```
    To run a specific feature on a different browser, you can execute the browser-specific script with the feature path:
    `npm run test:firefox features/login.feature`
+
    Alternatively, you can temporarily modify the main `test` script in `package.json` or create new specialized scripts.
+ ``` 
+   Run specific Scenario:@logout tagged scenario
+   npm run test:logout
+   npm run test:emptyLogin
+  
+  Without Debugging (Headless Mode)
+   npm run test:emptyLogin:no-debug # For the @emptyLogin tag
+# To run other scenarios without debug, define similar ':no-debug' scripts in package.json
 
 4. Run with UI (headed mode - defaults to Chromium):
    The `test:headed` script provided in the original `Installation` section example (`cucumber-js --world-parameters "{\\\"headless\\\": false}"`) does not inherently include browser selection via `BROWSER_NAME`. To run in headed mode with a specific browser, you would typically adjust your scripts in `package.json` or run with environment variables:
@@ -288,4 +297,4 @@ npm run report
 
 ---
 
-For more information or support, please contact the test automation team.
+For more information or support, please contact Ivica.

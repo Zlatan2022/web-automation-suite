@@ -17,6 +17,7 @@
     "test:sauceDemo": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@sauceDemo\"",
     "test:invalidLogin": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@invalidLogin\"",
     "test:emptyLogin": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@emptyLogin\"",
+    "test:emptyLogin:no-debug": "cross-env BROWSER_NAME=chromium cucumber-js --tags \"@emptyLogin\"",
     "test:sortProducts": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js --tags \"@sortProducts\""
   },
   "keywords": [
