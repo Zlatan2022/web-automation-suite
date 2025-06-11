@@ -23,4 +23,4 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps ${{ matrix.browser }}
       - name: Run tests
-        run: cross-env BROWSER_NAME=${{ matrix.browser }} cucumber-js
+        run: npx cross-env BROWSER_NAME=${{ matrix.browser }} cucumber-js
