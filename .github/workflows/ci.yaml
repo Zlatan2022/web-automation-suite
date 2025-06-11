@@ -24,3 +24,17 @@ jobs:
         run: npx playwright install --with-deps ${{ matrix.browser }}
       - name: Run tests
         run: npx cross-env BROWSER_NAME=${{ matrix.browser }} cucumber-js
+      - name: Upload Cucumber Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-reports-${{ matrix.browser }}
+          path: reports/
+          retention-days: 7
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.browser }}
+          path: screenshots/
+          retention-days: 7
