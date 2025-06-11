@@ -9,7 +9,7 @@
     "test": "cross-env BROWSER_NAME=chromium cucumber-js",
     "test:chromium": "cross-env BROWSER_NAME=chromium cucumber-js",
     "test:firefox": "cross-env BROWSER_NAME=firefox cucumber-js",
-    "test:edge": "cross-env BROWSER_NAME=webkit cucumber-js",
+    "test:webkit": "cross-env BROWSER_NAME=webkit cucumber-js",
     "test:debug": "cross-env BROWSER_NAME=chromium DEBUG=true PWDEBUG=1 cucumber-js",
     "test:codegen": "playwright codegen",
     "test:inspector": "cross-env BROWSER_NAME=chromium PWDEBUG=1 cucumber-js",
